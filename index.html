@@ -14,10 +14,10 @@
             --border: #E5E5E5;
             --muted: #8C8C8C;
         }
-        * { box-sizing: border-box; font-family: 'Inter', sans-serif; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        * { box-sizing: border-box; font-family: 'Inter', sans-serif; }
         body { background: var(--bg); color: var(--charcoal); margin: 0; padding: 0; overflow-x: hidden; }
 
-        /* --- LANDING SCREEN --- */
+        /* --- LANDING SCREEN (Fixed GitHub Gap) --- */
         #welcomeScreen {
             position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
             background: var(--charcoal); color: var(--bg);
@@ -25,26 +25,26 @@
             z-index: 2000; text-align: center; padding: 20px;
         }
         .hero-title { font-family: 'Georgia', serif; font-size: 42px; letter-spacing: -1px; margin: 0; }
-        .hero-sub { font-size: 10px; text-transform: uppercase; letter-spacing: 5px; color: var(--accent); margin-top: 10px; }
+        .hero-sub { font-size: 10px; text-transform: uppercase; letter-spacing: 5px; color: var(--accent); margin-top: 15px; }
         
         .start-btn { 
-            margin-top: 50px; padding: 16px 45px; border: 1px solid var(--accent); 
+            margin-top: 60px; padding: 16px 45px; border: 1px solid var(--accent); 
             background: transparent; color: var(--bg); cursor: pointer;
             font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 2.5px;
+            transition: 0.3s;
         }
-        .start-btn:hover { background: var(--accent); color: var(--charcoal); box-shadow: 0 0 20px rgba(197, 160, 89, 0.3); }
+        .start-btn:hover { background: var(--accent); color: var(--charcoal); }
 
-        .welcome-footer { position: absolute; bottom: 40px; text-align: center; width: 100%; }
+        .welcome-footer { position: absolute; bottom: 40px; width: 100%; text-align: center; }
         .dev-by { font-size: 9px; text-transform: uppercase; letter-spacing: 3px; color: var(--muted); margin-bottom: 15px; }
-        .welcome-socials a { color: var(--bg); font-size: 22px; margin: 0 18px; text-decoration: none; opacity: 0.7; }
-        .welcome-socials a:hover { color: var(--accent); opacity: 1; transform: translateY(-3px); }
+        .welcome-socials a { color: var(--bg); font-size: 22px; margin: 0 15px; text-decoration: none; display: inline-block; }
 
         /* --- APP INTERFACE --- */
-        .nav { display: flex; justify-content: center; gap: 30px; padding: 15px 0; background: rgba(253, 252, 251, 0.95); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; }
+        .nav { display: flex; justify-content: center; gap: 30px; padding: 15px 0; background: #fff; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; }
         .nav-item { font-size: 10px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; color: var(--muted); border-bottom: 2px solid transparent; }
         .nav-item.active { color: var(--charcoal); border-bottom-color: var(--charcoal); }
 
-        .container { width: 100%; max-width: 600px; margin: 0 auto; padding: 20px 15px 120px 15px; }
+        .container { width: 100%; max-width: 650px; margin: 0 auto; padding: 20px 15px 120px 15px; }
         .hidden { display: none !important; }
 
         .field-group { margin-bottom: 20px; }
@@ -52,29 +52,42 @@
         input, textarea { width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: 4px; font-size: 14px; outline: none; background: #fff; }
 
         /* --- CV PREVIEW --- */
-        .cv-inner { padding: 40px 25px; border: 1px solid var(--border); background: var(--bg); position: relative; }
+        .cv-inner { padding: 45px; border: 1px solid var(--border); background: #fff; position: relative; }
         .cv-header { text-align: center; margin-bottom: 25px; }
-        .cv-photo { width: 110px; height: 110px; border: 1px solid var(--charcoal); object-fit: cover; margin-bottom: 15px; padding: 4px; background: white; }
-        .contact-bar { display: flex; flex-direction: column; align-items: center; gap: 5px; font-size: 10px; color: var(--muted); margin: 15px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 10px 0; }
+        .cv-photo { width: 110px; height: 110px; border: 1px solid var(--charcoal); object-fit: cover; margin-bottom: 15px; padding: 4px; }
+        
+        .contact-bar { display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; font-size: 10px; color: var(--muted); margin: 15px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 10px 0; }
 
-        .section-h { font-size: 10px; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 10px; border-bottom: 1px solid var(--border); padding-bottom: 4px; }
-        .content { font-size: 12.5px; color: #333; white-space: pre-line; margin-bottom: 20px; }
+        .section-h { font-size: 10px; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 10px; border-bottom: 1px solid var(--border); padding-bottom: 4px; margin-top: 25px; }
+        .content { font-size: 12.5px; color: #333; white-space: pre-line; margin-bottom: 15px; line-height: 1.6; }
 
         .skill-container { margin-bottom: 12px; }
-        .skill-info { display: flex; justify-content: space-between; font-size: 10px; font-weight: 700; text-transform: uppercase; margin-bottom: 4px; }
-        .progress-bg { width: 100%; height: 6px; background: #e8e8e8; border-radius: 10px; }
-        .progress-fill { height: 100%; background: var(--charcoal); width: 0%; border-radius: 10px; }
+        .skill-info { display: flex; justify-content: space-between; font-size: 10px; font-weight: 700; margin-bottom: 4px; }
+        .progress-bg { width: 100%; height: 6px; background: #eee; border-radius: 10px; overflow: hidden; }
+        .progress-fill { height: 100%; background: var(--charcoal); width: 0%; transition: 1s ease-in-out; }
 
-        .cv-bottom { margin-top: 40px; display: flex; justify-content: space-between; align-items: flex-end; }
-        .sig-wrapper { text-align: center; width: 140px; border-top: 1px solid var(--charcoal); padding-top: 5px; }
+        .cv-bottom { margin-top: 50px; display: flex; justify-content: space-between; align-items: flex-end; }
+        .sig-wrapper { text-align: center; width: 150px; border-top: 1px solid var(--charcoal); padding-top: 5px; font-size: 9px; font-weight: 800; text-transform: uppercase; }
 
-        .cv-footer { margin-top: 50px; text-align: center; border-top: 1px solid var(--border); padding-top: 25px; }
-        .socials a { color: var(--charcoal); font-size: 20px; margin: 0 15px; text-decoration: none; }
+        /* --- FOOTER ELEMENTS --- */
+        .cv-footer-web { margin-top: 60px; text-align: center; border-top: 1px solid var(--border); padding-top: 20px; }
+        .socials a { color: var(--charcoal); font-size: 18px; margin: 0 10px; text-decoration: none; }
+        
+        /* Hidden by default on web, shown on PDF */
+        .pdf-only-credit { display: none; text-align: center; font-size: 9px; color: var(--muted); margin-top: 30px; letter-spacing: 1px; }
 
-        .controls { position: fixed; bottom: 25px; right: 20px; display: flex; flex-direction: column; gap: 10px; z-index: 1100; }
-        .btn-round { background: var(--charcoal); color: var(--bg); width: 50px; height: 50px; border-radius: 50%; border: none; display: flex; align-items: center; justify-content: center; font-size: 18px; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+        .controls { position: fixed; bottom: 25px; right: 20px; display: flex; flex-direction: column; gap: 12px; z-index: 1100; }
+        .btn-round { background: var(--charcoal); color: var(--bg); width: 50px; height: 50px; border-radius: 50%; border: none; display: flex; align-items: center; justify-content: center; font-size: 20px; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
 
-        @media print { #welcomeScreen, .nav, .controls, .form-view { display: none !important; } }
+        /* --- PRINT/PDF FIXES --- */
+        @media print {
+            #welcomeScreen, .nav, .controls, .form-view, .cv-footer-web { display: none !important; }
+            .container { padding: 0; max-width: 100%; }
+            .cv-inner { border: none; padding: 0; width: 100%; }
+            .pdf-only-credit { display: block !important; } /* Shows simple credit on PDF */
+            .progress-bg { -webkit-print-color-adjust: exact; background-color: #eee !important; }
+            .progress-fill { -webkit-print-color-adjust: exact; background-color: #2D2926 !important; }
+        }
     </style>
 </head>
 <body>
@@ -86,7 +99,7 @@
     <button class="start-btn" onclick="enterApp()">Get Started</button>
 
     <div class="welcome-footer">
-        <div class="dev-by">Credit Goes To</div>
+        <div class="dev-by">Developed By</div>
         <div class="welcome-socials">
             <a href="https://github.com/6ANIK9" target="_blank"><i class="fab fa-github"></i></a>
             <a href="https://www.instagram.com/6mdaniksheikh9" target="_blank"><i class="fab fa-instagram"></i></a>
@@ -96,8 +109,8 @@
 
 <div id="mainApp" class="hidden">
     <div class="nav">
-        <div class="nav-item active" id="btnEdit" onclick="tab('edit')">1. Compose</div>
-        <div class="nav-item" id="btnView" onclick="tab('view')">2. Preview</div>
+        <div class="nav-item active" id="btnEdit" onclick="tab('edit')">Compose</div>
+        <div class="nav-item" id="btnView" onclick="tab('view')">Preview</div>
     </div>
 
     <div class="container">
@@ -107,7 +120,7 @@
                 <input type="file" accept="image/*" onchange="updateImg(event)">
             </div>
             <div class="field-group">
-                <label>Personal Info</label>
+                <label>Identity</label>
                 <input type="text" id="iName" placeholder="Full Name" oninput="sync()">
                 <input type="text" id="iTitle" placeholder="Professional Title" oninput="sync()" style="margin-top:8px">
             </div>
@@ -118,13 +131,13 @@
                 <input type="text" id="iAddr" placeholder="Location" oninput="sync()" style="margin-top:8px">
             </div>
             <div class="field-group">
-                <label>Career & Education</label>
-                <textarea id="iEdu" rows="3" placeholder="Education background..." oninput="sync()"></textarea>
-                <textarea id="iExp" rows="3" placeholder="Work history..." oninput="sync()" style="margin-top:8px"></textarea>
+                <label>Background</label>
+                <textarea id="iEdu" rows="3" placeholder="Education..." oninput="sync()"></textarea>
+                <textarea id="iExp" rows="4" placeholder="Experience..." oninput="sync()" style="margin-top:8px"></textarea>
             </div>
             <div class="field-group">
-                <label>Skills (Format: HTML:90, Management:80)</label>
-                <input type="text" id="iSkills" placeholder="Skill:Percentage" oninput="sync()">
+                <label>Expertise (Skill:Value, Skill:Value)</label>
+                <input type="text" id="iSkills" placeholder="HTML:90, UI:85" oninput="sync()">
             </div>
             <div class="field-group">
                 <label>Verification</label>
@@ -132,34 +145,35 @@
             </div>
         </div>
 
-        <div id="viewArea" class="cv-preview hidden">
+        <div id="viewArea" class="hidden">
             <div id="captureArea" class="cv-inner">
                 <div class="cv-header">
                     <img id="oImg" class="cv-photo" src="https://via.placeholder.com/150">
-                    <h1 id="oName" style="font-family: Georgia, serif; font-size: 26px; margin: 0;">NAME</h1>
-                    <div id="oTitle" style="font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: var(--muted); margin-top: 5px;">DESIGNATION</div>
+                    <h1 id="oName" style="font-family: Georgia, serif; font-size: 28px; margin: 0; text-transform: uppercase;">YOUR NAME</h1>
+                    <div id="oTitle" style="font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-top: 5px; font-weight: 700;">DESIGNATION</div>
                     <div class="contact-bar">
                         <span id="oPhone"></span> <span id="oEmail"></span> <span id="oAddr"></span>
                     </div>
                 </div>
 
-                <div class="section"><div class="section-h">Academic</div><div class="content" id="oEdu"></div></div>
+                <div class="section"><div class="section-h">Education</div><div class="content" id="oEdu"></div></div>
                 <div class="section"><div class="section-h">Experience</div><div class="content" id="oExp"></div></div>
                 <div class="section"><div class="section-h">Skills</div><div id="skillBars"></div></div>
                 <div class="section"><div class="section-h">References</div><div class="content" id="oRef"></div></div>
 
                 <div class="cv-bottom">
-                    <div style="font-size: 10px; color: var(--muted);">Date: <span id="currentDate"></span></div>
-                    <div class="sig-wrapper"><div style="font-size: 9px; font-weight: 800; text-transform: uppercase; color: var(--muted);">Authorized Signature</div></div>
+                    <div style="font-size: 10px; color: var(--muted);">Dated: <span id="currentDate"></span></div>
+                    <div class="sig-wrapper">Authorized Signature</div>
                 </div>
 
-                <div class="cv-footer">
-                    <div style="font-size: 9px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; color: var(--muted);">System Developed by</div>
+                <div class="pdf-only-credit">CREDIT GOES TO 6ANIK9</div>
+
+                <div class="cv-footer-web">
+                    <div style="font-size: 9px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; color: var(--muted);">Developed by 6ANIK9</div>
                     <div class="socials">
-                        <a href="https://www.instagram.com/6mdaniksheikh9" target="_blank"><i class="fab fa-instagram"></i></a>
                         <a href="https://github.com/6ANIK9" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://www.instagram.com/6mdaniksheikh9" target="_blank"><i class="fab fa-instagram"></i></a>
                     </div>
-                    <div style="font-size: 7px; color: #eee; margin-top: 10px;">CREDIT: 6ANIK9</div>
                 </div>
             </div>
         </div>
@@ -172,41 +186,31 @@
 </div>
 
 <script>
-    console.log("%c CareerCanvas %c Developed by 6ANIK9 ", "color:white; background:#2D2926; padding:5px;", "color:white; background:#C5A059; padding:5px;");
-
     function enterApp() {
-        const welcome = document.getElementById('welcomeScreen');
-        welcome.style.opacity = '0';
-        setTimeout(() => {
-            welcome.style.display = 'none';
-            document.getElementById('mainApp').classList.remove('hidden');
-        }, 500);
+        document.getElementById('welcomeScreen').style.display = 'none';
+        document.getElementById('mainApp').classList.remove('hidden');
     }
 
     window.onload = () => { document.getElementById('currentDate').innerText = new Date().toLocaleDateString('en-GB'); };
 
     function tab(mode) {
-        if(mode === 'view') {
-            document.getElementById('editArea').classList.add('hidden');
-            document.getElementById('viewArea').classList.remove('hidden');
-            document.getElementById('btnView').classList.add('active');
-            document.getElementById('btnEdit').classList.remove('active');
+        const isView = (mode === 'view');
+        document.getElementById('editArea').classList.toggle('hidden', isView);
+        document.getElementById('viewArea').classList.toggle('hidden', !isView);
+        document.getElementById('btnView').classList.toggle('active', isView);
+        document.getElementById('btnEdit').classList.toggle('active', !isView);
+        if(isView) {
             setTimeout(() => { 
                 document.querySelectorAll('.progress-fill').forEach(bar => {
-                    bar.style.width = bar.getAttribute('data-percent') + "%";
+                    bar.style.width = bar.dataset.percent + "%";
                 });
-            }, 200);
-        } else {
-            document.getElementById('editArea').classList.remove('hidden');
-            document.getElementById('viewArea').classList.add('hidden');
-            document.getElementById('btnEdit').classList.add('active');
-            document.getElementById('btnView').classList.remove('active');
+            }, 100);
         }
     }
 
     function sync() {
-        document.getElementById('oName').innerText = document.getElementById('iName').value.toUpperCase() || "NAME";
-        document.getElementById('oTitle').innerText = document.getElementById('iTitle').value || "DESIGNATION";
+        document.getElementById('oName').innerText = document.getElementById('iName').value.toUpperCase() || "YOUR NAME";
+        document.getElementById('oTitle').innerText = document.getElementById('iTitle').value.toUpperCase() || "DESIGNATION";
         document.getElementById('oPhone').innerText = document.getElementById('iPhone').value;
         document.getElementById('oEmail').innerText = document.getElementById('iEmail').value;
         document.getElementById('oAddr').innerText = document.getElementById('iAddr').value;
@@ -230,15 +234,15 @@
     function updateImg(e) { if(e.target.files[0]) document.getElementById('oImg').src = URL.createObjectURL(e.target.files[0]); }
 
     function downloadImage() {
-        if(document.getElementById('viewArea').classList.contains('hidden')) tab('view');
+        tab('view');
         setTimeout(() => {
-            html2canvas(document.getElementById('captureArea'), { scale: 2 }).then(canvas => {
+            html2canvas(document.getElementById('captureArea'), { scale: 3, useCORS: true }).then(canvas => {
                 const link = document.createElement('a');
-                link.download = 'XNZY_Professional_CV_6ANIK9.png';
+                link.download = 'CareerCanvas_6ANIK9.png';
                 link.href = canvas.toDataURL();
                 link.click();
             });
-        }, 600);
+        }, 500);
     }
 </script>
 </body>
