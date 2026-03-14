@@ -2,248 +2,273 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>CareerCanvas | Created by 6ANIK9</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MD ANiK SHEiKH | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    
     <style>
-        :root { 
-            --bg: #FDFCFB; 
-            --charcoal: #2D2926; 
-            --accent: #C5A059; 
-            --border: #E5E5E5;
-            --muted: #8C8C8C;
+        :root {
+            --primary-bg: #050505;      
+            --glass: rgba(15, 15, 18, 0.95); 
+            --accent: #3b82f6; 
+            --accent-glow: rgba(59, 130, 246, 0.5);
+            --text-main: #ffffff;
+            --text-dim: #88888b;
+            --border: rgba(255, 255, 255, 0.08);
         }
-        * { box-sizing: border-box; font-family: 'Inter', sans-serif; }
-        body { background: var(--bg); color: var(--charcoal); margin: 0; padding: 0; overflow-x: hidden; }
 
-        /* --- LANDING SCREEN (Fixed GitHub Gap) --- */
-        #welcomeScreen {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
-            background: var(--charcoal); color: var(--bg);
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            z-index: 2000; text-align: center; padding: 20px;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--text-main);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
         }
-        .hero-title { font-family: 'Georgia', serif; font-size: 42px; letter-spacing: -1px; margin: 0; }
-        .hero-sub { font-size: 10px; text-transform: uppercase; letter-spacing: 5px; color: var(--accent); margin-top: 15px; }
-        
-        .start-btn { 
-            margin-top: 60px; padding: 16px 45px; border: 1px solid var(--accent); 
-            background: transparent; color: var(--bg); cursor: pointer;
-            font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 2.5px;
-            transition: 0.3s;
+
+        .aurora {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1; filter: blur(100px); opacity: 0.15;
         }
-        .start-btn:hover { background: var(--accent); color: var(--charcoal); }
 
-        .welcome-footer { position: absolute; bottom: 40px; width: 100%; text-align: center; }
-        .dev-by { font-size: 9px; text-transform: uppercase; letter-spacing: 3px; color: var(--muted); margin-bottom: 15px; }
-        .welcome-socials a { color: var(--bg); font-size: 22px; margin: 0 15px; text-decoration: none; display: inline-block; }
+        .blob {
+            position: absolute; width: 500px; height: 500px;
+            background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+            animation: drift 20s infinite alternate;
+        }
 
-        /* --- APP INTERFACE --- */
-        .nav { display: flex; justify-content: center; gap: 30px; padding: 15px 0; background: #fff; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; }
-        .nav-item { font-size: 10px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; color: var(--muted); border-bottom: 2px solid transparent; }
-        .nav-item.active { color: var(--charcoal); border-bottom-color: var(--charcoal); }
+        @keyframes drift { from { transform: translate(-10%, -10%); } to { transform: translate(10%, 10%); } }
 
-        .container { width: 100%; max-width: 650px; margin: 0 auto; padding: 20px 15px 120px 15px; }
-        .hidden { display: none !important; }
+        .container {
+            max-width: 800px; width: 100%;
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 30px;
+            padding: 40px;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 40px 80px rgba(0,0,0,0.7);
+            animation: fadeIn 1s ease-out forwards;
+        }
 
-        .field-group { margin-bottom: 20px; }
-        label { font-size: 9px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.2px; color: var(--muted); display: block; margin-bottom: 6px; }
-        input, textarea { width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: 4px; font-size: 14px; outline: none; background: #fff; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-        /* --- CV PREVIEW --- */
-        .cv-inner { padding: 45px; border: 1px solid var(--border); background: #fff; position: relative; }
-        .cv-header { text-align: center; margin-bottom: 25px; }
-        .cv-photo { width: 110px; height: 110px; border: 1px solid var(--charcoal); object-fit: cover; margin-bottom: 15px; padding: 4px; }
-        
-        .contact-bar { display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; font-size: 10px; color: var(--muted); margin: 15px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 10px 0; }
+        .profile-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 30px;
+            margin-bottom: 40px;
+            gap: 40px;
+        }
 
-        .section-h { font-size: 10px; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 10px; border-bottom: 1px solid var(--border); padding-bottom: 4px; margin-top: 25px; }
-        .content { font-size: 12.5px; color: #333; white-space: pre-line; margin-bottom: 15px; line-height: 1.6; }
+        .hero-text h1 {
+            font-size: clamp(1.8rem, 5vw, 3rem);
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            background: linear-gradient(to bottom, #fff, #888);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
 
-        .skill-container { margin-bottom: 12px; }
-        .skill-info { display: flex; justify-content: space-between; font-size: 10px; font-weight: 700; margin-bottom: 4px; }
-        .progress-bg { width: 100%; height: 6px; background: #eee; border-radius: 10px; overflow: hidden; }
-        .progress-fill { height: 100%; background: var(--charcoal); width: 0%; transition: 1s ease-in-out; }
+        .title-sub { 
+            color: var(--accent); 
+            font-weight: 700; 
+            font-size: 0.75rem; 
+            letter-spacing: 3px; 
+            text-transform: uppercase;
+            margin-top: 10px;
+        }
 
-        .cv-bottom { margin-top: 50px; display: flex; justify-content: space-between; align-items: flex-end; }
-        .sig-wrapper { text-align: center; width: 150px; border-top: 1px solid var(--charcoal); padding-top: 5px; font-size: 9px; font-weight: 800; text-transform: uppercase; }
+        .profile-img {
+            width: 110px; height: 110px; border-radius: 50%;
+            background-image: url('https://github.com/6anik9.png');
+            background-size: cover; background-position: center;
+            box-shadow: 0 0 25px var(--accent-glow);
+            animation: pulse 3s infinite alternate;
+            flex-shrink: 0;
+            border: none;
+        }
 
-        /* --- FOOTER ELEMENTS --- */
-        .cv-footer-web { margin-top: 60px; text-align: center; border-top: 1px solid var(--border); padding-top: 20px; }
-        .socials a { color: var(--charcoal); font-size: 18px; margin: 0 10px; text-decoration: none; }
-        
-        /* Hidden by default on web, shown on PDF */
-        .pdf-only-credit { display: none; text-align: center; font-size: 9px; color: var(--muted); margin-top: 30px; letter-spacing: 1px; }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 15px var(--accent-glow); }
+            100% { box-shadow: 0 0 35px var(--accent-glow); }
+        }
 
-        .controls { position: fixed; bottom: 25px; right: 20px; display: flex; flex-direction: column; gap: 12px; z-index: 1100; }
-        .btn-round { background: var(--charcoal); color: var(--bg); width: 50px; height: 50px; border-radius: 50%; border: none; display: flex; align-items: center; justify-content: center; font-size: 20px; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+        .section { margin-bottom: 35px; }
 
-        /* --- PRINT/PDF FIXES --- */
-        @media print {
-            #welcomeScreen, .nav, .controls, .form-view, .cv-footer-web { display: none !important; }
-            .container { padding: 0; max-width: 100%; }
-            .cv-inner { border: none; padding: 0; width: 100%; }
-            .pdf-only-credit { display: block !important; } /* Shows simple credit on PDF */
-            .progress-bg { -webkit-print-color-adjust: exact; background-color: #eee !important; }
-            .progress-fill { -webkit-print-color-adjust: exact; background-color: #2D2926 !important; }
+        h3 {
+            font-size: 0.65rem; color: var(--accent);
+            text-transform: uppercase; letter-spacing: 3px;
+            margin-bottom: 15px; display: flex; align-items: center; gap: 10px;
+        }
+
+        .content-text { font-size: 0.9rem; line-height: 1.6; color: var(--text-dim); }
+
+        .skill-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; font-size: 0.85rem; }
+        .bar-bg { width: 120px; height: 3px; background: #1a1a1a; border-radius: 5px; overflow: hidden; }
+        .bar-fill { height: 100%; background: var(--accent); width: var(--w); }
+
+        /* CLASSIC PREMIUM PROJECT CARD */
+        .project-card {
+            background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+            padding: 30px; 
+            border-radius: 12px; 
+            border: 1px solid var(--border);
+            text-decoration: none; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card:hover { 
+            border-color: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.04);
+            transform: translateX(10px);
+        }
+
+        .project-info h4 { 
+            color: #fff; 
+            margin-bottom: 8px; 
+            font-size: 1.1rem; 
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .project-info p { 
+            font-size: 0.8rem; 
+            color: var(--text-dim); 
+            transition: color 0.3s ease;
+        }
+
+        .project-card:hover .project-info p {
+            color: var(--accent);
+        }
+
+        .project-link-icon {
+            font-size: 1.1rem;
+            color: var(--text-dim);
+            transition: all 0.4s ease;
+            opacity: 0.5;
+            transform: translateX(-10px);
+        }
+
+        .project-card:hover .project-link-icon {
+            opacity: 1;
+            color: #fff;
+            transform: translateX(0);
+        }
+
+        .project-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: all 0.4s ease;
+        }
+
+        .project-card:hover::after {
+            width: 100%;
+            left: 0;
+        }
+
+        .footer {
+            margin-top: 50px; padding-top: 20px; border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        .dev-credit { font-size: 0.7rem; color: var(--text-dim); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 15px; }
+        .socials { display: flex; justify-content: center; gap: 20px; }
+        .socials a { color: var(--text-dim); font-size: 1.2rem; transition: 0.3s; }
+        .socials a:hover { color: var(--accent); }
+
+        @media (max-width: 600px) {
+            .profile-header { flex-direction: column-reverse; text-align: center; }
+            .container { padding: 30px 20px; }
+            .project-card:hover { transform: translateY(-5px); }
         }
     </style>
 </head>
 <body>
 
-<div id="welcomeScreen">
-    <h1 class="hero-title">Career <span style="font-weight:100; font-style:italic;">Canvas</span></h1>
-    <p class="hero-sub">Minimalist CV Generator</p>
-    
-    <button class="start-btn" onclick="enterApp()">Get Started</button>
-
-    <div class="welcome-footer">
-        <div class="dev-by">Developed By</div>
-        <div class="welcome-socials">
-            <a href="https://github.com/6ANIK9" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="https://www.instagram.com/6mdaniksheikh9" target="_blank"><i class="fab fa-instagram"></i></a>
-        </div>
-    </div>
-</div>
-
-<div id="mainApp" class="hidden">
-    <div class="nav">
-        <div class="nav-item active" id="btnEdit" onclick="tab('edit')">Compose</div>
-        <div class="nav-item" id="btnView" onclick="tab('view')">Preview</div>
-    </div>
+    <div class="aurora"><div class="blob"></div></div>
 
     <div class="container">
-        <div id="editArea" class="form-view">
-            <div class="field-group">
-                <label>Profile Image</label>
-                <input type="file" accept="image/*" onchange="updateImg(event)">
+        <header class="profile-header">
+            <div class="hero-text">
+                <h1>MD ANiK SHEiKH</h1>
+                <p class="title-sub">Basic IT Expert</p>
             </div>
-            <div class="field-group">
-                <label>Identity</label>
-                <input type="text" id="iName" placeholder="Full Name" oninput="sync()">
-                <input type="text" id="iTitle" placeholder="Professional Title" oninput="sync()" style="margin-top:8px">
-            </div>
-            <div class="field-group">
-                <label>Contact</label>
-                <input type="text" id="iPhone" placeholder="Phone" oninput="sync()">
-                <input type="email" id="iEmail" placeholder="Email" oninput="sync()" style="margin-top:8px">
-                <input type="text" id="iAddr" placeholder="Location" oninput="sync()" style="margin-top:8px">
-            </div>
-            <div class="field-group">
-                <label>Background</label>
-                <textarea id="iEdu" rows="3" placeholder="Education..." oninput="sync()"></textarea>
-                <textarea id="iExp" rows="4" placeholder="Experience..." oninput="sync()" style="margin-top:8px"></textarea>
-            </div>
-            <div class="field-group">
-                <label>Expertise (Skill:Value, Skill:Value)</label>
-                <input type="text" id="iSkills" placeholder="HTML:90, UI:85" oninput="sync()">
-            </div>
-            <div class="field-group">
-                <label>Verification</label>
-                <textarea id="iRef" rows="2" placeholder="References..." oninput="sync()"></textarea>
-            </div>
+            <div class="profile-img"></div>
+        </header>
+
+        <div class="section">
+            <h3><i class="fa-solid fa-user"></i> About Me</h3>
+            <p class="content-text">
+                I am a professional with a background in security supervision and a passion for modern web technology. I enjoy building clean, minimalist digital experiences and solving problems through code.
+            </p>
         </div>
 
-        <div id="viewArea" class="hidden">
-            <div id="captureArea" class="cv-inner">
-                <div class="cv-header">
-                    <img id="oImg" class="cv-photo" src="https://via.placeholder.com/150">
-                    <h1 id="oName" style="font-family: Georgia, serif; font-size: 28px; margin: 0; text-transform: uppercase;">YOUR NAME</h1>
-                    <div id="oTitle" style="font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-top: 5px; font-weight: 700;">DESIGNATION</div>
-                    <div class="contact-bar">
-                        <span id="oPhone"></span> <span id="oEmail"></span> <span id="oAddr"></span>
-                    </div>
-                </div>
-
-                <div class="section"><div class="section-h">Education</div><div class="content" id="oEdu"></div></div>
-                <div class="section"><div class="section-h">Experience</div><div class="content" id="oExp"></div></div>
-                <div class="section"><div class="section-h">Skills</div><div id="skillBars"></div></div>
-                <div class="section"><div class="section-h">References</div><div class="content" id="oRef"></div></div>
-
-                <div class="cv-bottom">
-                    <div style="font-size: 10px; color: var(--muted);">Dated: <span id="currentDate"></span></div>
-                    <div class="sig-wrapper">Authorized Signature</div>
-                </div>
-
-                <div class="pdf-only-credit">CREDIT GOES TO 6ANIK9</div>
-
-                <div class="cv-footer-web">
-                    <div style="font-size: 9px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; color: var(--muted);">Developed by 6ANIK9</div>
-                    <div class="socials">
-                        <a href="https://github.com/6ANIK9" target="_blank"><i class="fab fa-github"></i></a>
-                        <a href="https://www.instagram.com/6mdaniksheikh9" target="_blank"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
+        <div class="section">
+            <h3><i class="fa-solid fa-location-dot"></i> Location</h3>
+            <p class="content-text">Chandpur, Bangladesh</p>
         </div>
+
+        <div class="section">
+            <h3><i class="fa-solid fa-shield-halved"></i> Expertise</h3>
+            <div class="skill-row"><span>Supervision</span><div class="bar-bg"><div class="bar-fill" style="--w: 100%;"></div></div></div>
+            <div class="skill-row"><span>Leadership</span><div class="bar-bg"><div class="bar-fill" style="--w: 100%;"></div></div></div>
+            <div class="skill-row"><span>Communication</span><div class="bar-bg"><div class="bar-fill" style="--w: 100%;"></div></div></div>
+        </div>
+
+        <div class="section">
+            <h3><i class="fa-solid fa-bolt"></i> Skills</h3>
+            <div class="skill-row"><span>Negotiation</span><div class="bar-bg"><div class="bar-fill" style="--w: 100%;"></div></div></div>
+            <div class="skill-row"><span>Web / HTML</span><div class="bar-bg"><div class="bar-fill" style="--w: 45%;"></div></div></div>
+            <div class="skill-row"><span>CSS / Python</span><div class="bar-bg"><div class="bar-fill" style="--w: 40%;"></div></div></div>
+        </div>
+
+        <div class="section">
+            <h3><i class="fa-solid fa-graduation-cap"></i> Education</h3>
+            <div class="skill-row"><span>DCSE (CGPA 3.56)</span><div class="bar-bg"><div class="bar-fill" style="--w: 92%;"></div></div></div>
+            <div class="skill-row"><span>HSC (GPA 4.23)</span><div class="bar-bg"><div class="bar-fill" style="--w: 76%;"></div></div></div>
+            <div class="skill-row"><span>SSC (GPA 4.57)</span><div class="bar-bg"><div class="bar-fill" style="--w: 70%;"></div></div></div>
+        </div>
+
+        <div class="section">
+            <h3><i class="fa-solid fa-code"></i> Featured Project</h3>
+            <a href="https://6anik9.github.io/Career-Canvas/" target="_blank" class="project-card">
+                <div class="project-info">
+                    <h4>Career-Canvas</h4>
+                    <p>Professional CV Builder Platform</p>
+                </div>
+                <div class="project-link-icon">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+            </a>
+        </div>
+
+        <footer class="footer">
+            <p class="dev-credit">Developed by</p>
+            <div class="socials">
+                <a href="https://instagram.com/6mdaniksheikh9" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://github.com/6anik9" target="_blank"><i class="fa-brands fa-github"></i></a>
+            </div>
+        </footer>
     </div>
 
-    <div class="controls">
-        <button class="btn-round" style="background: var(--accent);" onclick="downloadImage()"><i class="fas fa-camera"></i></button>
-        <button class="btn-round" onclick="window.print()"><i class="fas fa-file-pdf"></i></button>
-    </div>
-</div>
-
-<script>
-    function enterApp() {
-        document.getElementById('welcomeScreen').style.display = 'none';
-        document.getElementById('mainApp').classList.remove('hidden');
-    }
-
-    window.onload = () => { document.getElementById('currentDate').innerText = new Date().toLocaleDateString('en-GB'); };
-
-    function tab(mode) {
-        const isView = (mode === 'view');
-        document.getElementById('editArea').classList.toggle('hidden', isView);
-        document.getElementById('viewArea').classList.toggle('hidden', !isView);
-        document.getElementById('btnView').classList.toggle('active', isView);
-        document.getElementById('btnEdit').classList.toggle('active', !isView);
-        if(isView) {
-            setTimeout(() => { 
-                document.querySelectorAll('.progress-fill').forEach(bar => {
-                    bar.style.width = bar.dataset.percent + "%";
-                });
-            }, 100);
-        }
-    }
-
-    function sync() {
-        document.getElementById('oName').innerText = document.getElementById('iName').value.toUpperCase() || "YOUR NAME";
-        document.getElementById('oTitle').innerText = document.getElementById('iTitle').value.toUpperCase() || "DESIGNATION";
-        document.getElementById('oPhone').innerText = document.getElementById('iPhone').value;
-        document.getElementById('oEmail').innerText = document.getElementById('iEmail').value;
-        document.getElementById('oAddr').innerText = document.getElementById('iAddr').value;
-        document.getElementById('oEdu').innerText = document.getElementById('iEdu').value;
-        document.getElementById('oExp').innerText = document.getElementById('iExp').value;
-        document.getElementById('oRef').innerText = document.getElementById('iRef').value;
-        
-        const skillStr = document.getElementById('iSkills').value;
-        const container = document.getElementById('skillBars');
-        container.innerHTML = "";
-        if(skillStr) {
-            skillStr.split(',').forEach(item => {
-                const p = item.split(':');
-                if(p.length === 2) {
-                    container.innerHTML += `<div class="skill-container"><div class="skill-info"><span>${p[0].trim()}</span><span>${p[1].trim()}%</span></div><div class="progress-bg"><div class="progress-fill" data-percent="${p[1].trim()}"></div></div></div>`;
-                }
-            });
-        }
-    }
-
-    function updateImg(e) { if(e.target.files[0]) document.getElementById('oImg').src = URL.createObjectURL(e.target.files[0]); }
-
-    function downloadImage() {
-        tab('view');
-        setTimeout(() => {
-            html2canvas(document.getElementById('captureArea'), { scale: 3, useCORS: true }).then(canvas => {
-                const link = document.createElement('a');
-                link.download = 'CareerCanvas_6ANIK9.png';
-                link.href = canvas.toDataURL();
-                link.click();
-            });
-        }, 500);
-    }
-</script>
 </body>
-</html>
+                    </html>
